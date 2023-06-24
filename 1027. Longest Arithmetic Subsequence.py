@@ -15,5 +15,11 @@ def solver(nums):
             longest = max(longest, dp[i][diff])
     return longest 
 
+def rec_solver(nums, cache={}): 
+    if len(nums) == 1: 
+        return 1 
+    
+
+
 
 print(solver([20,1,15,3,10,5,8]))
