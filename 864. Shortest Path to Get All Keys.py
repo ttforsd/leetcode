@@ -1,3 +1,6 @@
+import time
+
+
 def solver(grid): 
     start, all_keys = findStart(grid)
     return bfs(grid, start, all_keys)
@@ -76,6 +79,8 @@ grid = ["b....................@a..AB.cC"]
 grid = ["..#....##.","....d.#.D#","#...#.c...","..##.#..a.","...#....##","#....b....",".#..#.....","..........",".#..##..A.",".B..C.#..@"]
 for _ in grid: 
     print(_)
-
+t0 = time.time()
 print(solver(grid))
+t1 = time.time()
+print(t1-t0)
 print(len(grid[0]))
