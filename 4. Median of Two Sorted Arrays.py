@@ -1,3 +1,24 @@
+def solver(nums1, nums2): 
+    total_left = 0 
+    prt1L = 0 
+    prt1R = len(nums1) - 1
+    prt2L = 0 
+    prt2R = len(nums2) - 1 
+    half = int(round(len(nums1) + len(nums2) / 2 , 0))
+    while total_left < half: 
+        remain = int(round(half - total_left / 2 , 0))
+        
+
+        
+
+def isodd(nums1, nums2): 
+    l = len(nums1) + len(nums2)
+    if l % 2 == 0: 
+        return False 
+    return True
+
+
+
 def solver1(nums1, nums2):
     nums = []
     while len(nums1) + len(nums2) != 0: 
@@ -16,7 +37,7 @@ def solver1(nums1, nums2):
         return nums[l//2]
     return (nums[l//2] + nums[l//2 -1]) /2
 
-def solver(nums1, nums2): 
+def solver2(nums1, nums2): 
     total = len(nums1) + len(nums2)
     half = total //2 - 1 
     l1 = 0 
