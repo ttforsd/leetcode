@@ -1,9 +1,23 @@
-# bfs but biased towards greater height
+# bfs, choose tallest, until encircle
+# find min height in path, cal area, add all enclose to visited 
+
+import heapq     
 
 
 
 def solver(heightMap): 
-    pass
+    flooded = set() 
+
+    def bfs(x, y):  
+        # height current pos, prev pos, pathset, path list 
+        queue = [(-heightMap[x][y], (x,y), None, set(), [])]
+        while len(queue) != 0:
+            height, pos, prev, path_set, path_list = heapq.heappop(queue)
+            
+
+            
+
+        
 
 
 
