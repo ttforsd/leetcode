@@ -3,8 +3,32 @@
 # store distinct at index i
 # if change in value, means i-1 and i different
 #
+from collections import defaultdict
 
-def main(nums, k):
+def main(nums, k): 
+    count = defaultdict(int) 
+    l = 0 
+    m = 0 
+    res = 0 
+    for i, n in enumerate(nums): 
+        count[n] += 1 
+        while len(count) > k: 
+            l = m 
+            tmp = nums[l] 
+            count[tmp] -= 1 
+            if count[tmp] == 0: 
+                del count[tmp] 
+            l += 1 
+        m = max(l, m)
+        while count[nums[m]] > 1: 
+            count[nums[m]] -= 1
+            m += 1 
+        if len(count) == k: 
+            res += (m - l + 1) 
+    return res
+
+
+def main5(nums, k):
     l = 0
     r = 0
     switch = True
@@ -218,4 +242,14 @@ k = 360
 # k = 2
 nums = [2,1,1,1,2]
 k = 1
+
+nums = [1,2,1,2,2,3]
+k = 2 
+
+nums = [2,2,1,1]
+k = 2
+
+nums = [1,2,1,2,3]
+k = 2
+
 print(main(nums, k))
