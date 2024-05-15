@@ -13,6 +13,33 @@
 # cur height >= max in stack, compute max sum (cur index - stack index) * height
 # else: pop the 
 
+
+def solver1(matrix): 
+    res = 0 
+    dp = {}
+    for i, row in enumerate(matrix): 
+        for j, n in enumerate(row): 
+            if n != "1": 
+                continue 
+            # check if left exist
+            dp[(i, j)] = []
+            if (i, j - 1) in dp: 
+                left_most = dp[(i, j -1)][-1][1] 
+            else: 
+                left_most = j 
+            if (i - 1, j) in dp: 
+                for x, y in dp[(i-1, j)]: 
+                    if dp[(i, j)] and y >= dp[(i, j)][-1][-1]:  
+                        continue
+                    y = max(left_most, y)
+                    res = max(res, (i - x + 1) * (j - y + 1)) 
+                    dp[(i,j)].append((x, y))
+            res = max(res, j - left_most + 1)
+            dp[(i, j)].append((i, left_most))
+    return res 
+
+
+
 def area_max(heights): 
     res = 0 
     heights.append(0) 
@@ -62,7 +89,14 @@ def solver(matrix):
 matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
 heights = [2, 1, 2]
 
-print(solver(matrix))
+# print(solver(matrix))
 
 
-print(area_max(heights))
+# print(area_max(heights))
+matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+
+matrix = [["0","0","1","0"],["0","0","1","0"],["0","0","1","0"],["0","0","1","1"],["0","1","1","1"],["0","1","1","1"],["1","1","1","1"]]
+
+
+
+print(solver1(matrix))
